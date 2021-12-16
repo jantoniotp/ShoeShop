@@ -23,19 +23,14 @@ class Brands
     private $Name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=100)
      */
-    private $IdModel;
+    private $Image;
 
     /**
      * @ORM\Column(type="integer")
      */
     private $Status;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Shoes", inversedBy="brands")
-     */
-    private $shoes;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Models", mappedBy="brands")
@@ -59,14 +54,14 @@ class Brands
         return $this;
     }
 
-    public function getIdModel(): ?int
+    public function getImage(): ?string
     {
-        return $this->IdModel;
+        return $this->Image;
     }
 
-    public function setIdModel(int $IdModel): self
+    public function setImage(string $Image): self
     {
-        $this->IdModel = $IdModel;
+        $this->Image = $Image;
 
         return $this;
     }
