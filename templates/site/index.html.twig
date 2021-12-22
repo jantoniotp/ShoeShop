@@ -3,28 +3,19 @@
 {% block title %}Inicio{% endblock %}
 
 {% block body %}
-    {{ dump(brands) }}
     <div class="container px-4 py-5" id="custom-cards">
         <h2 class="pb-2 border-bottom">Galeria</h2>
 
         <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-            <div class="col">
-                <a href="#">
-                    <img src="{{ asset('uploads/photos/adidas.jpg') }}" class="card-img" alt="Image">
-                </a>
-            </div>
 
-            <div class="col">
-                <a href="#">
-                    <img src="{{ asset('uploads/photos/nike.jpg') }}" class="card-img" alt="Image">
-                </a>
-            </div>
+            {% for brand in brands %}
+                <div class="col">
+                    <a href="/shoe/{{ brand.id }}">
+                        <img src="{{ asset('uploads/photos/'~brand.Image) }}" class="card-img" alt="Image">
+                    </a>
+                </div>
+            {% endfor %}
 
-            <div class="col">
-                <a href="#">
-                    <img src="{{ asset('uploads/photos/pirma.jpg') }}" class="card-img" alt="Image">
-                </a>
-            </div>
         </div>
     </div>
 {% endblock %}
