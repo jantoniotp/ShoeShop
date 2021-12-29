@@ -37,6 +37,11 @@ class Brands
      */
     private $models;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Shoes", mappedBy="brands")
+     */
+    private $shoes;
+
     public function getId(): ?int
     {
         return $this->id;

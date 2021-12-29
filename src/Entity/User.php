@@ -48,11 +48,6 @@ class User
     private $Status;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Shoes", mappedBy="user")
-     */
-    private $shoes;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Favorites", inversedBy="user")
      */
     private $favorites;

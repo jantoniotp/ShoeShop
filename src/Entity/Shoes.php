@@ -18,15 +18,9 @@ class Shoes
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=100)
      */
-
     private $Name;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $IdBrand;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -39,17 +33,22 @@ class Shoes
     private $Status;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="shoes")
+     * @ORM\Column(type="string", length=100)
      */
-    private $user;
+    private $Image;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Brands", mappedBy="shoes")
+     * @ORM\Column(type="string", length=100)
+     */
+    private $Model;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Brands", inversedBy="shoes")
      */
     private $brands;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Favorites", inversedBy="shoes")
+     * @ORM\OneToMany(targetEntity="App\Entity\Favorites", mappedBy="shoes")
      */
     private $favorites;
 
@@ -77,18 +76,6 @@ class Shoes
         return $this;
     }
 
-    public function getIdBrand(): ?int
-    {
-        return $this->IdBrand;
-    }
-
-    public function setIdBrand(int $IdBrand): self
-    {
-        $this->IdBrand = $IdBrand;
-
-        return $this;
-    }
-
     public function getAvailables(): ?int
     {
         return $this->Availables;
@@ -112,4 +99,34 @@ class Shoes
 
         return $this;
     }
+
+    public function getImage(): ?string
+    {
+        return $this->Image;
+    }
+
+    public function setImage(string $Image): self
+    {
+        $this->Image = $Image;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModel()
+    {
+        return $this->Model;
+    }
+
+    /**
+     * @param mixed $Model
+     */
+    public function setModel($Model): void
+    {
+        $this->Model = $Model;
+    }
+
+
 }

@@ -33,7 +33,7 @@ class Favorites
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Shoes", mappedBy="favorites")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Shoes", inversedBy="favorites")
      */
     private $shoes;
 
