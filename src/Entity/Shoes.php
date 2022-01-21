@@ -128,5 +128,37 @@ class Shoes
         $this->Model = $Model;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getBrands()
+    {
+        return $this->brands;
+    }
+
+    /**
+     * @param mixed $brands
+     */
+    public function setBrands($brands): void
+    {
+        $this->brands = $brands;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFavorites()
+    {
+        return $this->favorites;
+    }
+
+    /**
+     * @param mixed $favorites
+     */
+    public function setFavorites($favorites): void
+    {
+        $this->favorites = $favorites;
+    }
+
 
 }
