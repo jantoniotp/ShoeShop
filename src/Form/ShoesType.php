@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Shoes;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +18,9 @@ class ShoesType extends AbstractType
             ->add('Name')
             ->add('Availables', IntegerType::class)
             ->add('Status', IntegerType::class)
-            ->add('Image')
+            ->add('Image', FileType::class, ['label' => 'Seleccione un imagen',
+                                                        'mapped' => false,
+                                                        'required' => false])
             ->add('Model')
             ->add('brands', IntegerType::class)
             ->add('Registrar', SubmitType::class)
