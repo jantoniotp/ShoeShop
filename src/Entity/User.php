@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements PasswordAuthenticatedUserInterface
 {
     /**
      * @ORM\Id
@@ -23,7 +24,7 @@ class User
     private $Name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $LastName;
 
@@ -41,6 +42,12 @@ class User
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $Email;
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $Password;
 
     /**
      * @ORM\Column(type="integer")
@@ -138,4 +145,70 @@ class User
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->Password;
+    }
+
+    /**
+     * @param string $Password
+     */
+    public function setPassword(string $Password): void
+    {
+        $this->Password = $Password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFavorites()
+    {
+        return $this->favorites;
+    }
+
+    /**
+     * @param mixed $favorites
+     */
+    public function setFavorites($favorites): void
+    {
+        $this->favorites = $favorites;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param mixed $state
+     */
+    public function setState($state): void
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * @param mixed $cities
+     */
+    public function setCities($cities): void
+    {
+        $this->cities = $cities;
+    }
+
+
 }
